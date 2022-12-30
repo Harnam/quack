@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<title>Page Title</title>
+</head>
+<body onload="dat()">
+
+<script>
+
+  function dat(){
+  	var year = document.getElementById("year");
+    const d = new Date();
+	let y = d.getFullYear();
+    year.innerHTML = y;
+  }
+
+  function compute() {
+    var input = document.getElementById("input").value.toLowerCase();
+    var output = document.getElementById("putin");
+	
+    var chars = ['u', 'a', 'c', 'o', 'e'];
+    
+    var con = "";
+    if(input == "") { output.value = ""; return; }
+    for (var i = 0; i < input.length; i++) {
+    	var ch = input[i];
+        if(ch == 'z') ch = 's';
+    	if(ch.toLowerCase() != ch.toUpperCase()){
+			if(ch.charCodeAt(0) >= 107)
+            	ch = String.fromCharCode(ch.charCodeAt(0) - 10);
+            else ch = ch.charCodeAt(0) - 97;
+            var val = ((parseInt(ch, 26)).toString(5)).padStart(2, '0');
+            con = con + chars[(parseInt(val.charAt(0)))] + chars[(parseInt(val.charAt(1)))];
+        }
+        else
+        	con = con + "k" + input[i] + "q";
+    }
+    
+    output.value = ("q" + con + "k");
+  }
+  
+  function decompute() {
+    var input = document.getElementById("putin").value.toLowerCase();
+    var output = document.getElementById("input");
+	
+    var chars = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    var dict = { u: 0 , a: 1 , c: 2, o: 3, e: 4};
+    
+    var con = "";var cha = ""; var c = 0;
+    
+    for (var i = 0; i < input.length; i++) {
+    	var ch = input[i];
+        if(ch.toLowerCase() != ch.toUpperCase()){
+        if((ch != 'q') && (ch != 'k')){
+        	cha = (cha) + dict[ch]; c = c + 1;
+        	if(c == 2) {
+            	con = con + chars[parseInt(cha, 5)];
+                cha = ""; c = 0;
+            }
+        }} else {
+        	con = con + ch
+        }
+    }
+    output.value = (con);
+  }
+</script>
+<style> @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap'); </style>
+<style>
+	body{
+    margin: 0; padding: 0;
+        background-color: #ffebeb;
+    }
+    *{
+    font-family: 'Comic Neue', cursive;
+    font-size: 17px;
+    }
+    input[type=text], textarea {
+      -webkit-transition: all 0.30s ease-in-out;
+      -moz-transition: all 0.30s ease-in-out;
+      -ms-transition: all 0.30s ease-in-out;
+      -o-transition: all 0.30s ease-in-out;
+      outline: none;
+      margin: 5px 1px 3px 0px;
+      border: 1px solid #DDDDDD;
+    }
+    input[type=text]:focus, textarea:focus {
+      box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+      border: 1px solid rgba(81, 203, 238, 1);
+    }
+	.inf {
+    	margin:5px auto 3px auto;
+    	width: calc(100% - 22px);
+        padding: 10px;
+        border-radius: 5px;
+        height: 35vh;
+    }
+    .ins{
+    	margin: auto;
+    	width: 90%;
+    }
+    .fact{
+    	margin: auto;
+        text-align: center;
+    }
+    .column {
+      padding-bottom: 15px;
+      float: left;
+      width: 45%;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+	.logo{
+    	width: 30%;
+    }
+    .logotext{
+      	font-size:5vw;
+    }
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width:700px) {
+      .column {
+        width: 100%;
+      }
+      .logotext{
+      	font-size:17px;
+      }
+      .logo{
+    	width: 15%;
+      }
+    }
+</style>
+<div class="fact" style="display:flex;">
+	<img src="logo.png" alt="logo" class="logo">
+	<h1 class="logotext">human-quack interface</h1>
+</div>
+<div class="ins row">
+  <div class="column">
+  	<textarea class="inf" placeholder="Enter text to convert" oninput="compute()" type="text" id ="input"></textarea>
+   </div>
+   <div style="float:right;" class="column">
+	<textarea class="inf" placeholder="quecooeueock qoeueeooek qoecek quccecoeaueocoek" oninput="decompute()" type="text" id ="putin"></textarea>
+   </div>
+</div>
+<div class="fact">
+	<span style="font-size: small;">Fun Fact: Ducks cannot say the letter 'z'. (Source: Ducks have not been observed to speak)</span>
+<div class="fact" style="width:100%; position: absolute; bottom: 5px;">
+	<span style="font-size: small;">© Harnam Singh </span><span id="year" style="font-size: small;"></span>
+</div>
+
+</body>
+</html>
+
