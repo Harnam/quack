@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
 <title>human-quack interface</title>
 <link rel="icon" href="logo.png">
 </head>
@@ -66,7 +68,7 @@
     output.value = (con);
   }
 </script>
-<style> @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap'); </style>
+<style> @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap'); </style>
 <style>
 	body{
     margin: 0; padding: 0;
@@ -74,7 +76,7 @@
     }
     *{
     font-family: 'Comic Neue', cursive;
-    font-size: 17px;
+    font-size: 2vh;
     }
     input[type=text], textarea {
       -webkit-transition: all 0.30s ease-in-out;
@@ -106,8 +108,7 @@
     }
     .column {
       padding-bottom: 15px;
-      float: left;
-      width: 45%;
+      width: 100%;
     }
 
     .row:after {
@@ -116,18 +117,15 @@
       clear: both;
     }
 	.logo{
-    	width: 30%;
+    	width: 15vw;
     }
     .logotext{
-      	font-size:5vw;
+      	font-size:4vw;
     }
     /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-    @media screen and (max-width:700px) {
-      .column {
-        width: 100%;
-      }
+    @media screen and (max-width:750px) {
       .logotext{
-      	font-size:17px;
+      	font-size:5vw;
       }
       .logo{
     	width: 15%;
@@ -148,7 +146,8 @@
 </div>
 <div class="fact">
 	<span style="font-size: small;">Fun Fact: Ducks cannot say the letter 'z'. (Source: Ducks have not been observed to speak)</span>
-<div class="fact" style="width:100%; position: absolute; bottom: 5px;">
+</div><br><br>
+<div class="fact" style="width:100%; position: fixed; bottom: 5px;">
 	<span style="font-size: small;">© Harnam Singh </span><span id="year" style="font-size: small;"></span>
 </div>
 
